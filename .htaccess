@@ -1,6 +1,9 @@
 # Canonical host: https://telcwords.com (no www)
 RewriteEngine On
 
+# 0) Internal agent notes are not part of the public site
+RewriteRule ^\.agent(/|$) - [F,L]
+
 # 1) www.telcwords.com (http or https) -> https://telcwords.com, path and query preserved
 RewriteCond %{HTTP_HOST} ^www\.telcwords\.com$ [NC]
 RewriteRule ^(.*)$ https://telcwords.com/$1 [R=301,L]
