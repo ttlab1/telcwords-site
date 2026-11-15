@@ -1,0 +1,12 @@
+# Canonical host: https://telcwords.com (no www)
+RewriteEngine On
+
+# 1) www.telcwords.com (http or https) -> https://telcwords.com, path and query preserved
+RewriteCond %{HTTP_HOST} ^www\.telcwords\.com$ [NC]
+RewriteRule ^(.*)$ https://telcwords.com/$1 [R=301,L]
+
+# 2) http -> https, only when neither the server nor the proxy reports HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+RewriteCond %{HTTP_HOST} ^telcwords\.com$ [NC]
+RewriteRule ^(.*)$ https://telcwords.com/$1 [R=301,L]
