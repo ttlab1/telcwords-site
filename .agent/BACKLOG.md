@@ -4,15 +4,21 @@ Ordered by expected value. Agents: tick items off with the date and commit, add 
 findings at the right place, and keep this file short and current.
 
 ## Technical
-- [ ] Full first audit against PLAYBOOK §4 (all 9 pages).
+- [x] 2026-11-16 (technical-seo): full audit of all 10 pages; fixes in the changelog.
+- [ ] FIRST: live verification failed on 2026-11-16 (web fetch refused telcwords.com in
+      the unattended run). Next run: fetch deploy-check.txt and the changed pages first.
+- [ ] index.html head: og:site_name, WebSite JSON-LD, theme-color; link to /start.html
+      (only in a run that can verify live).
+- [ ] 320 px overflow on level pages, topic page and articles guide (6–52 px).
+- [ ] Proposal: contrast of white text on the green das badge (~2.3:1).
+- [ ] Manifest has no 192/512 px icons (needs a logo export from the owner).
 - [ ] Confirm from outside the browser that `http://telcwords.com/` answers with a
       301 from the server (so far only seen through a browser that may upgrade to
       https by itself).
 - [ ] Find out, without risking a real page, what happens on the server when a file
       is deleted from the repo (use a throwaway probe file) and record the answer in
       PLAYBOOK §1.
-- [ ] Review structured data per page type; add BreadcrumbList and FAQPage only
-      where the page really contains that content.
+- [x] 2026-11-16: structured data reviewed; Article added on the two guides.
 - [ ] Proposal only: viewport `user-scalable=no` in `index.html` (accessibility).
 - [ ] Submit sitemap / verify site in Bing Webmaster Tools (needs the owner; Bing
       already sends about half as many organic visits as Google).

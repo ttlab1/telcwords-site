@@ -50,3 +50,13 @@ commits. Record every title/description change with old and new text.
 - Later the same day (owner request): the home-screen "B1 by topic" section was replaced
   by a chooser that opens when the B1 card is tapped ("All B1 words" or one of 10 topics).
   Other levels start directly; deep links unchanged. Tested in headless Chromium.
+
+## 2026-11-16 · technical-seo
+- NOT verified live: the web fetch tool refused telcwords.com in this unattended run.
+  Local checks and headless rendering passed. See the report.
+- `site.webmanifest` fixed: name, dark colours, only existing icons (`96b9928`).
+- 9 landing pages: footer link to the B1 topic page, "telc gGmbH" spelling, theme-color,
+  underlined in-text links and focus outline; level pages: Play buttons deep-link to the
+  level, table cells wrap on phones; guides: Article JSON-LD + og:type article; articles
+  guide links to the topic page; sitemap lastmod. No title/description/h1 changes.
+  `index.html` and `.htaccess` untouched.
