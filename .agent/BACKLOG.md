@@ -19,16 +19,27 @@ findings at the right place, and keep this file short and current.
 
 ## Content
 - [ ] Expand `telc-exam-vocabulary-tips.html` (about 340 words) into a full guide.
-- [ ] Expand `german-articles-der-die-das.html` (about 330 words): rules by ending,
-      exceptions, examples from `WORDS`, practice call to action.
-- [ ] Topic vocabulary pages from `WORDS`, starting with B1 (largest list and most
-      impressions): work, housing, health, food, travel, authorities/offices.
+- [x] 2026-11-16 (`61073aa`): expanded `german-articles-der-die-das.html` (rules by
+      ending counted on 2,391 nouns).
+- [x] 2026-11-16 (`806e72b`): `telc-b1-vocabulary-by-topic.html` (622 words, 10 topics
+      on one page). Do not split into per-topic pages unless Search Console shows
+      per-topic queries; that would risk thin/duplicate pages.
+- [ ] A2 topic page with the same approach (after the B1 page shows impressions).
 - [ ] "How many words do you need for TELC A1/A2/B1/B2/C1" explainer.
 - [ ] Per-level study plans (for example "TELC B1 in 8 weeks: vocabulary plan").
 - [ ] Verb pages per level (separable verbs, verbs with prepositions) from `WORDS`.
 - [ ] Exam explainer pages (format of each TELC level), facts verified on telc.net.
 
+## Owner decisions
+- [ ] Errors in the game's `WORDS` data (agents may not edit it): A2 Überfall has
+      `die` (should be der); about 15 B1 entries have wrong/misleading English or typos.
+      Full list in `reports/2026-11-16-content.md`. Owner to approve a one-off fix.
+- [ ] Windsor.ai is a trial with only 30 days of history; fine for 28-day reports, but
+      period-over-period comparison (28 vs previous 28 days) will not work.
+
 ## Analytics follow-ups
+- [ ] Articles guide title/description changed 2026-11-16: do not change again before
+      2026-12-07; judge effect then.
 - [ ] B1 list: 82 impressions at position 11 in the baseline period; first target
       for title/description/content improvement.
 - [ ] A2 (position 14.9) and B2 (12.5) lists: same treatment.
@@ -36,5 +47,6 @@ findings at the right place, and keep this file short and current.
       ("telc b1 wortschatz", "telc a1 kelime listesi" at positions 50+).
 
 ## Distribution
-- [ ] First drafts for r/German and r/languagelearning once a new guide is live.
+- [ ] First drafts for r/German and r/languagelearning: a guide is live now; the
+      counted der/die/das numbers (e.g. -er only 69 % der, Ge- only 40 % das) are the hook.
 - [ ] Research free tool/resource lists for German learners that accept submissions.
