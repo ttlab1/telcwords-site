@@ -73,14 +73,20 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-
 .xp-track{height:5px;background:var(--s2);border-radius:3px;overflow:hidden}
 .xp-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#ec4899);border-radius:3px;transition:width .7s ease}
 .lv-grid{display:flex;flex-direction:column;gap:9px;flex:1}
-.tp-box{margin-top:18px}
-.tp-title{font-size:.95rem;font-weight:800;color:var(--b1)}
-.tp-sub{font-size:.74rem;color:var(--muted);margin:2px 0 9px}
+.tp-box{display:none;position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.66);align-items:flex-end;justify-content:center}
+.tp-box.open{display:flex}
+.tp-sheet{background:var(--bg,#0f0f13);border:1px solid var(--border);border-radius:20px 20px 0 0;width:100%;max-width:520px;max-height:92vh;overflow-y:auto;padding:18px 16px 20px}
+.tp-title{font-size:1.05rem;font-weight:800;color:var(--lc,var(--b1))}
+.tp-sub{font-size:.78rem;color:var(--muted);margin:2px 0 10px}
+.tp-or{margin:14px 0 8px}
+.tp-all{width:100%;background:linear-gradient(130deg,#7c3aed,#ec4899);border:0;border-radius:13px;padding:14px;color:#fff;font-family:inherit;font-size:.95rem;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:space-between}
+.tp-all .tp-ct{background:rgba(255,255,255,.2);color:#fff}
+.tp-cancel{width:100%;margin-top:12px;background:none;border:1px solid var(--border);border-radius:13px;padding:11px;color:var(--muted);font-family:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
 .tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .tp-chip{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:11px 10px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--text);font-family:inherit;font-size:.84rem;font-weight:700;text-align:left;min-height:46px;transition:transform .12s}
 .tp-chip:active{transform:scale(.97)}
 .tp-nm{flex:1;min-width:0}
-.tp-ct{font-size:.7rem;font-weight:700;color:var(--b1);background:rgba(139,92,246,.12);border-radius:20px;padding:2px 7px}
+.tp-ct{font-size:.7rem;font-weight:700;color:var(--lc,var(--b1));background:rgba(139,92,246,.12);border-radius:20px;padding:2px 7px}
 .lv-card{background:var(--s1);border:1px solid var(--border);border-radius:15px;padding:15px 16px;cursor:pointer;display:flex;align-items:center;gap:13px;position:relative;overflow:hidden;transition:transform .12s,box-shadow .12s}
 .lv-card:active{transform:scale(.97);box-shadow:0 2px 16px rgba(0,0,0,.4)}
 .lv-card::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3.5px;border-radius:4px}
@@ -447,22 +453,27 @@ function buildHome(){
     const c=document.createElement('div');
     c.className='lv-card '+lv.cls;
     c.innerHTML=`<div class="lv-badge">${lv.key}</div><div class="lv-info"><div class="lv-name">${lv.name}</div><div class="lv-desc">${lv.desc}</div>${pb>0?`<div class="lv-pb">⭐ Best: ${pb} XP</div>`:''}${accW>0?`<div style="margin-top:4px"><span class="wrong-badge">⚠️ ${accW} wrong word${accW!==1?'s':''}</span></div>`:''}</div><div class="lv-arrow">›</div>`;
-    c.onclick=()=>startLevel(lv.key);
+    c.onclick=()=>{if(TOPICS[lv.key])openTopicPick(lv.key);else startLevel(lv.key);};
     grid.appendChild(c);
   });
-  const tb=document.getElementById('topicBox');
-  if(tb){
-    tb.innerHTML='<div class="tp-title">B1 by topic</div><div class="tp-sub">Practise only the words of one theme</div><div class="tp-grid" id="topicGrid"></div>';
-    const tg=document.getElementById('topicGrid');
-    TOPICS.B1.forEach(t=>{
-      const b=document.createElement('button');b.type='button';b.className='tp-chip';
-      b.innerHTML=`<span class="tp-ic">${t.icon}</span><span class="tp-nm">${t.name}</span><span class="tp-ct">${t.words.length}</span>`;
-      b.onclick=()=>startLevel('B1',t.key);
-      tg.appendChild(b);
-    });
-  }
 }
-
+function openTopicPick(lv){
+  const L=LEVELS.find(l=>l.key===lv),tb=document.getElementById('topicBox');
+  tb.style.setProperty('--lc',L.color);
+  tb.innerHTML=`<div class="tp-sheet" role="dialog" aria-modal="true" aria-label="Choose how to practise ${lv}"><div class="tp-title">${L.name}</div><div class="tp-sub">How do you want to practise?</div><button type="button" class="tp-all" id="tpAll"><span>All ${lv} words</span><span class="tp-ct">${WORDS[lv].length}</span></button><div class="tp-sub tp-or">or choose one topic</div><div class="tp-grid" id="topicGrid"></div><button type="button" class="tp-cancel" id="tpCancel">Cancel</button></div>`;
+  const tg=document.getElementById('topicGrid');
+  TOPICS[lv].forEach(t=>{
+    const b=document.createElement('button');b.type='button';b.className='tp-chip';
+    b.innerHTML=`<span class="tp-ic">${t.icon}</span><span class="tp-nm">${t.name}</span><span class="tp-ct">${t.words.length}</span>`;
+    b.onclick=()=>{closeTopicPick();startLevel(lv,t.key);};
+    tg.appendChild(b);
+  });
+  document.getElementById('tpAll').onclick=()=>{closeTopicPick();startLevel(lv);};
+  document.getElementById('tpCancel').onclick=closeTopicPick;
+  tb.onclick=e=>{if(e.target===tb)closeTopicPick();};
+  tb.classList.add('open');
+}
+function closeTopicPick(){const tb=document.getElementById('topicBox');tb.classList.remove('open');tb.innerHTML='';}
 function startLevel(lv,topic){
   const tp=topic?getTopic(lv,topic):null;
   G.level=lv;G.topic=tp?tp.key:null;

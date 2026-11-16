@@ -47,3 +47,6 @@ commits. Record every title/description change with old and new text.
 - Topic page: 622 → 636 words (14 corrected words added), a "Play these N words" button
   per topic; title/description/H1 changed only in the number.
 - Articles guide rebuilt from corrected data: 2,391 → 2,394 nouns, -ung 257 → 258.
+- Later the same day (owner request): the home-screen "B1 by topic" section was replaced
+  by a chooser that opens when the B1 card is tapped ("All B1 words" or one of 10 topics).
+  Other levels start directly; deep links unchanged. Tested in headless Chromium.

@@ -1,1 +1,1 @@
-2026-11-16T08:08:53Z deploy probe: word fixes + B1 topic mode (retry)
+2026-11-16T08:13:32Z deploy probe: B1 chooser
