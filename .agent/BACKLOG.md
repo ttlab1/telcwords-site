@@ -31,9 +31,7 @@ findings at the right place, and keep this file short and current.
 - [ ] Exam explainer pages (format of each TELC level), facts verified on telc.net.
 
 ## Owner decisions
-- [ ] Errors in the game's `WORDS` data (agents may not edit it): A2 Überfall has
-      `die` (should be der); about 15 B1 entries have wrong/misleading English or typos.
-      Full list in `reports/2026-11-16-content.md`. Owner to approve a one-off fix.
+- [x] 2026-11-16: owner approved; 21 `WORDS` entries corrected (see changelog).
 - [ ] Windsor.ai is a trial with only 30 days of history; fine for 28-day reports, but
       period-over-period comparison (28 vs previous 28 days) will not work.
 

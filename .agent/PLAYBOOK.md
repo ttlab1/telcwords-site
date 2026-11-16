@@ -10,6 +10,12 @@ hosting panel any more: this repository is the only way the site changes.
 - Static site, no backend, no build step. Repo root = web root (`public_html`).
 - `index.html` is the game (single file, ~280 KB). It holds the game engine and the
   `WORDS` object: A1 1,099 · A2 1,049 · B1 2,098 · B2 714 · C1 1,264 = 6,224 words.
+- Since 2026-11-16 (owner's explicit request) the game also has a B1 topic mode: a
+  `TOPICS` object next to `LEVELS`, topic chips on the home screen and the deep link
+  `/?level=b1&topic=<key>` (work, housing, health, food, travel, offices, education,
+  media, environment, feelings). `TOPICS.B1` and the tables on
+  `telc-b1-vocabulary-by-topic.html` hold the same 636 words and must stay in sync.
+  Hard rule 2.1 still applies to agents: this was a one-off change ordered by the owner.
 - Landing pages: `start.html`, `telc-a1-vocabulary.html` … `telc-c1-vocabulary.html`,
   `german-articles-der-die-das.html`, `telc-exam-vocabulary-tips.html`.
 - Canonical host is `https://telcwords.com` (no www). `.htaccess` 301-redirects www

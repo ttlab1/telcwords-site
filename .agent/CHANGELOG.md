@@ -30,3 +30,20 @@ commits. Record every title/description change with old and new text.
 - Internal links to the new page from `start.html` (Guides; articles link text also
   updated), `telc-b1-vocabulary.html` and `telc-exam-vocabulary-tips.html`; sitemap now
   10 URLs; deploy probe updated (`c6e781c`). `index.html` untouched.
+
+## 2026-11-16 · content (follow-up, ordered live by the owner)
+- `WORDS` corrections in `index.html`, mirrored in the A2/B1 list pages. A2: Überfall
+  die → der. B1 English: Bank "bench / bank", bestehen "to pass (an exam) / consist of",
+  Blitz "lightning", Fahrplan "timetable / schedule", Handtuch "towel", Höhe "height /
+  altitude", Illustrierte "illustrated magazine", Kritik "criticism / review", Medikament
+  "medicine / medication", Mitbestimmung "co-determination / having a say",
+  Nahrungsmittel "food / foodstuff", Pass "passport", Schein "banknote / certificate",
+  See "lake", Sprechstunde "consultation hour", Technik "technology / technique",
+  sich wenden "to turn to / contact". B1 articles added: das Gift, die Quittung.
+  B1 spelling: naß → nass. Word counts per level unchanged (6,224).
+- Game: new B1 topic mode (home-screen chips, `/?level=b1&topic=<key>`, separate
+  `seen_B1_t_<key>` progress; personal best and wrong-word list shared with B1).
+  Tested in headless Chromium: topic and normal play, deep links, session end, no errors.
+- Topic page: 622 → 636 words (14 corrected words added), a "Play these N words" button
+  per topic; title/description/H1 changed only in the number.
+- Articles guide rebuilt from corrected data: 2,391 → 2,394 nouns, -ung 257 → 258.
