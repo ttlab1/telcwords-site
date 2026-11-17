@@ -14,7 +14,13 @@ should show exactly that line. The live-only checks (redirects, live robots/site
 ## Update 2026-11-17: verified live by the owner
 The owner opened https://telcwords.com/deploy-check.txt (showed the probe line of this
 run) and https://telcwords.com/telc-b2-vocabulary.html on his phone and confirmed both
-work correctly. The other changed pages were not checked one by one.
+work correctly. Later on 2026-11-17 the owner granted web fetch access and the agent verified live:
+deploy-check.txt = this run's probe; robots.txt correct; sitemap.xml has 10 <loc>, contains
+the topic page and 2026-11-16, no old dates; A1 page: header and sticky Play buttons go to
+/?level=a1, footer has "B1 words by topic" and "telc gGmbH"; articles guide (cache-busting
+query): footer link, new in-text sentence and gGmbH present. Note: the fetch tool twice
+summarised the sitemap wrongly (9 URLs, 2026-10-24); a yes/no question gave the real
+content. Ask the tool narrow yes/no questions for verification.
 
 ## Audited (repo, all 10 HTML pages + config files)
 - §4 on every page: one title, one description (137–154 chars), self canonical, one h1,

@@ -6,8 +6,8 @@ findings at the right place, and keep this file short and current.
 ## Technical
 - [x] 2026-11-16 (technical-seo): full audit of all 10 pages; fixes in the changelog.
 - [x] 2026-11-17: owner confirmed the 2026-11-16 technical-seo deploy live.
-- [ ] Web fetch of telcwords.com was refused in the unattended run (needs a permission
-      nobody can grant). If it fails again, report it; owner may need to allow the domain.
+- [x] 2026-11-17: owner granted web fetch access to telcwords.com; live checks work again.
+      If fetch is refused in a scheduled run, report it at once.
 - [ ] index.html head: og:site_name, WebSite JSON-LD, theme-color; link to /start.html
       (only in a run that can verify live).
 - [ ] 320 px overflow on level pages, topic page and articles guide (6–52 px).
