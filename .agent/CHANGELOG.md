@@ -54,6 +54,8 @@ commits. Record every title/description change with old and new text.
 ## 2026-11-16 · technical-seo
 - NOT verified live: the web fetch tool refused telcwords.com in this unattended run.
   Local checks and headless rendering passed. See the report.
+  2026-11-17: owner confirmed live: deploy-check.txt shows this run's probe and the B2
+  list page works on his phone.
 - `site.webmanifest` fixed: name, dark colours, only existing icons (`96b9928`).
 - 9 landing pages: footer link to the B1 topic page, "telc gGmbH" spelling, theme-color,
   underlined in-text links and focus outline; level pages: Play buttons deep-link to the

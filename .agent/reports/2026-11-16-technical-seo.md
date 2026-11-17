@@ -11,6 +11,11 @@ nobody has yet seen them on the live site. Deploy probe written in this push:
 should show exactly that line. The live-only checks (redirects, live robots/sitemap,
 .agent blocked) were not done for the same reason.
 
+## Update 2026-11-17: verified live by the owner
+The owner opened https://telcwords.com/deploy-check.txt (showed the probe line of this
+run) and https://telcwords.com/telc-b2-vocabulary.html on his phone and confirmed both
+work correctly. The other changed pages were not checked one by one.
+
 ## Audited (repo, all 10 HTML pages + config files)
 - §4 on every page: one title, one description (137–154 chars), self canonical, one h1,
   lang=en, viewport, GA4, OG/Twitter incl. og:image, JSON-LD parses, html.parser OK.
