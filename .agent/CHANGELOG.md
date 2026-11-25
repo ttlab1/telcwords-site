@@ -62,3 +62,8 @@ commits. Record every title/description change with old and new text.
   level, table cells wrap on phones; guides: Article JSON-LD + og:type article; articles
   guide links to the topic page; sitemap lastmod. No title/description/h1 changes.
   `index.html` and `.htaccess` untouched.
+
+## 2026-11-25 · distribution
+- No site changes. Report `.agent/reports/2026-11-25-distribution.md`: GA4 referral check
+  (Reddit 82 sessions / 60 % engaged in 28 days, steady daily, all to `/`), community rules
+  research, drafts for r/German and Lemmy !german (articles-guide counts), 5 backlink targets.

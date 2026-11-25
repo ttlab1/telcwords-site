@@ -52,6 +52,12 @@ findings at the right place, and keep this file short and current.
       ("telc b1 wortschatz", "telc a1 kelime listesi" at positions 50+).
 
 ## Distribution
-- [ ] First drafts for r/German and r/languagelearning: a guide is live now; the
-      counted der/die/das numbers (e.g. -er only 69 % der, Ge- only 40 % das) are the hook.
-- [ ] Research free tool/resource lists for German learners that accept submissions.
+- [x] 2026-11-25: drafts for r/German and Lemmy !german (der/die/das counts) given to the
+      owner. r/languagelearning excluded: its rules require multi-language products.
+- [x] 2026-11-25: 5 backlink targets given (UMich library guide, UMich Germanic portal,
+      Hunter LibGuide, Tsimpliarakis cheat sheet, awesome-german). Do not repeat before
+      2027-02 unless the owner reports a reply.
+- [ ] Next run: ask the owner/data whether the r/German post went out; measure it. Next hook:
+      B1 topic mode with a real excerpt from TOPICS.B1 (r/German at earliest 2026-12-23).
+- [ ] r/German wiki "Free interactive courses, exercises and tests" page: suggest via modmail.
+- [ ] Verify r/German and r/deutsch rules directly (reddit.com not fetchable in runs so far).
