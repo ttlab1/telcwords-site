@@ -8,6 +8,8 @@ findings at the right place, and keep this file short and current.
 - [x] 2026-11-17: owner confirmed the 2026-11-16 technical-seo deploy live.
 - [x] 2026-11-17: owner granted web fetch access to telcwords.com; live checks work again.
       If fetch is refused in a scheduled run, report it at once.
+      2026-11-26: a first fetch can return a stale copy (even pre-11-15 files); always use a
+      fresh, unique query string and re-fetch before concluding a deploy failed.
 - [ ] index.html head: og:site_name, WebSite JSON-LD, theme-color; link to /start.html
       (only in a run that can verify live).
 - [ ] 320 px overflow on level pages, topic page and articles guide (6–52 px).
@@ -33,6 +35,8 @@ findings at the right place, and keep this file short and current.
       per-topic queries; that would risk thin/duplicate pages.
 - [ ] A2 topic page with the same approach (after the B1 page shows impressions).
 - [ ] "How many words do you need for TELC A1/A2/B1/B2/C1" explainer.
+- [ ] Printable / PDF-friendly word list (query "wortschatz c1 deutsch liste pdf telc" at pos 9):
+      e.g. a print stylesheet for level pages; check demand again first.
 - [ ] Per-level study plans (for example "TELC B1 in 8 weeks: vocabulary plan").
 - [ ] Verb pages per level (separable verbs, verbs with prepositions) from `WORDS`.
 - [ ] Exam explainer pages (format of each TELC level), facts verified on telc.net.
@@ -45,11 +49,17 @@ findings at the right place, and keep this file short and current.
 ## Analytics follow-ups
 - [ ] Articles guide title/description changed 2026-11-16: do not change again before
       2026-12-07; judge effect then.
-- [ ] B1 list: 82 impressions at position 11 in the baseline period; first target
-      for title/description/content improvement.
-- [ ] A2 (position 14.9) and B2 (12.5) lists: same treatment.
-- [ ] Monthly review: present German/Turkish query data to the owner
-      ("telc b1 wortschatz", "telc a1 kelime listesi" at positions 50+).
+- [x] 2026-11-26 (`f0860cb`): B1 and A1 list titles/descriptions/H1 lead with "Vocabulary List";
+      judge from 2026-12-17 against A2/B2/C1 (unchanged control group). Before: B1 96 impr /
+      pos 7.3 / CTR 5.2 %, A1 31 / 6.5 / 3.2 % (GSC 2026-11-11 – 11-24).
+- [x] 2026-11-26: A2/B2 treatment dropped for now: both at pos ~7 with CTR 14–20 %.
+- [x] 2026-11-26: monthly review: German/Turkish query data shown to the owner; recommended
+      staying English-only. Optional: one English sentence per level page naming "Wortliste /
+      Wortschatz" (needs the owner's OK). Repeat in the December monthly review.
+- [ ] start.html lost position (4.6 → 14.0) while `/` gained; check overlap of the two for
+      generic "telc vocabulary" queries before changing anything.
+- [ ] Windsor trial: only 30 days of history, no previous-period comparison. Keep the halves
+      method or ask the owner about a plan.
 
 ## Distribution
 - [x] 2026-11-25: drafts for r/German and Lemmy !german (der/die/das counts) given to the

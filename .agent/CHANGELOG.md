@@ -67,3 +67,23 @@ commits. Record every title/description change with old and new text.
 - No site changes. Report `.agent/reports/2026-11-25-distribution.md`: GA4 referral check
   (Reddit 82 sessions / 60 % engaged in 28 days, steady daily, all to `/`), community rules
   research, drafts for r/German and Lemmy !german (articles-guide counts), 5 backlink targets.
+
+## 2026-11-26 · analytics (also November monthly review)
+- Data: Windsor trial gives only 30 days, so no previous-28-day comparison; halves + baseline used.
+  Report `.agent/reports/2026-11-26-analytics.md`.
+- `f0860cb` (Opus subagent, reviewed): B1 and A1 list pages; A2/B2/C1 unchanged as control.
+  B1 title old: `TELC B1 German Vocabulary List (2,098 Words with English) | TELC Words`
+  B1 title new: `TELC B1 Vocabulary List: 2,098 German Words with English | TELC Words`
+  B1 description old: `Complete TELC B1 German word list with English meanings and articles: 2,098 words you can search, learn and practise free with the TELC Words game.`
+  B1 description new: `All 2,098 TELC B1 German words with der/die/das and English meanings. Search the list, revise 636 words by topic, then practise free in a quick game.`
+  B1 H1 old: `TELC B1 German Vocabulary List: 2,098 Words with English`; new: `TELC B1 Vocabulary List: 2,098 German Words with English`.
+  A1 title old: `TELC A1 German Vocabulary List (1,099 Words with English) | TELC Words`
+  A1 title new: `TELC A1 Vocabulary List: 1,099 German Words with English | TELC Words`
+  A1 description old: `Complete TELC A1 German word list with English meanings and articles: 1,099 words you can search, learn and practise free with the TELC Words game.`
+  A1 description new: `All 1,099 TELC A1 German words with der/die/das and English meanings. Search the list or browse it by letter, then practise free in a quick game.`
+  A1 H1 old: `TELC A1 German Vocabulary List: 1,099 Words with English`; new: `TELC A1 Vocabulary List: 1,099 German Words with English`.
+  og/twitter title+description mirror the new title/description. A1: contextual links to the
+  articles guide and the A2 list. Sitemap lastmod for both; deploy probe.
+  Before (GSC 2026-11-11 – 11-24): B1 96 impr, pos 7.3, 5 clicks; A1 31 impr, pos 6.5, 1 click.
+  Do not change these titles/descriptions again before 2026-12-17.
+- Verified live 2026-11-26 ~15:50 UTC (second fetch; first fetch returned a stale copy).
