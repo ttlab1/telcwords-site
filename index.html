@@ -83,6 +83,21 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-
 .tp-all .tp-ct{background:rgba(255,255,255,.2);color:#fff}
 .tp-cancel{width:100%;margin-top:12px;background:none;border:1px solid var(--border);border-radius:13px;padding:11px;color:var(--muted);font-family:inherit;font-size:.85rem;font-weight:700;cursor:pointer}
 .tp-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.md-list{display:flex;flex-direction:column;gap:8px}
+.md-btn{width:100%;background:var(--s1);border:1px solid var(--border);border-radius:14px;padding:13px 12px;cursor:pointer;display:flex;align-items:center;gap:11px;color:var(--text);font-family:inherit;text-align:left;min-height:58px}
+.md-btn:active{transform:scale(.98)}
+.md-ic{font-size:1.35rem}
+.md-tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.md-tx b{font-size:.95rem}
+.md-tx small{font-size:.74rem;color:var(--muted)}
+.word-hint{font-size:.82rem;color:var(--muted);margin-top:6px;min-height:0}
+.word-hint:empty{display:none}
+.choices[data-mode=plural]{grid-template-columns:1fr 1fr}
+.choices[data-mode=plural] .ch{font-size:.9rem}
+.choices[data-mode=article] .ch{font-size:1.15rem;font-weight:800;min-height:64px}
+.choices[data-mode=article] .ch-der:not(.correct):not(.wrong):not(.reveal){border-color:rgba(59,130,246,.55);color:var(--der)}
+.choices[data-mode=article] .ch-die:not(.correct):not(.wrong):not(.reveal){border-color:rgba(236,72,153,.55);color:var(--die)}
+.choices[data-mode=article] .ch-das:not(.correct):not(.wrong):not(.reveal){border-color:rgba(34,197,94,.55);color:var(--das)}
 .tp-chip{background:var(--s1);border:1px solid var(--border);border-radius:13px;padding:11px 10px;cursor:pointer;display:flex;align-items:center;gap:8px;color:var(--text);font-family:inherit;font-size:.84rem;font-weight:700;text-align:left;min-height:46px;transition:transform .12s}
 .tp-chip:active{transform:scale(.97)}
 .tp-nm{flex:1;min-width:0}
@@ -231,7 +246,7 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-
   <div class="tp-box" id="topicBox"></div>
   <section class="seo-info">
     <h2>Free TELC German vocabulary trainer, A1 to C1</h2>
-    <p>Practise the German words you need for your telc exam. Pick a level above and answer against the clock. Nouns are colour-coded by article (der, die, das), and words you miss come back in the bonus round.</p>
+    <p>Practise the German words you need for your telc exam. Pick a level above, then choose a game: meanings, articles (der, die, das). Answer against the clock; words you miss come back in the bonus round.</p>
     <nav aria-label="Vocabulary lists">
       <a href="/telc-a1-vocabulary.html">TELC A1 word list</a>
       <a href="/telc-a2-vocabulary.html">TELC A2 word list</a>
@@ -277,6 +292,7 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-
       <div class="word-de" id="wordDe">—</div>
       <button class="speak-btn" id="speakBtn" onclick="speakWord()" title="Pronounce">🔊</button>
     </div>
+    <div class="word-hint" id="wordHint"></div>
     <div class="word-fb" id="wordFb"></div>
   </div>
   <div class="choices" id="choices"></div>
@@ -380,6 +396,7 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;min-
       <div class="word-de" id="bgWordDe">—</div>
       <button class="speak-btn" onclick="speakBonusWord()" title="Pronounce">🔊</button>
     </div>
+    <div class="word-hint" id="bgWordHint"></div>
     <div class="word-fb" id="bgWordFb"></div>
   </div>
   <div class="choices" id="bgChoices"></div>
@@ -417,12 +434,66 @@ const LEVELS=[
 ];
 
 const TOPICS={B1:[{key:"work",name:"Work",icon:"💼",words:["Abteilung","Angestellte","Arbeit","Arbeitgeber","Arbeitnehmer","Auftrag","Beruf","Betrieb","Betriebsrat","Bewerbung","Büro","Chef","Erfahrung","Erfolg","Fabrik","Fähigkeit","Feierabend","Firma","Gehalt","Gewerkschaft","Ingenieur","Job","Kollege","Konferenz","Leistung","Lohn","Mechaniker","Meister","Praktikant","Praktikum","Profi","Projekt","Rente","Schicht","Schreibtisch","Sekretärin","Sitzung","Stelle","Stellung","Streik","Tätigkeit","Team","Überstunde","Werkstatt","Werkzeug","arbeiten","beschäftigen","sich bewerben","einstellen","entlassen","kündigen","leiten","organisieren","streiken","übernehmen","verdienen","berufstätig","selbstständig","zuverlässig","Mitbestimmung"]},{key:"housing",name:"Housing",icon:"🏠",words:["Aufzug","Bad","Badewanne","Bett","Boden","Couch","Dach","Decke","Dusche","Erdgeschoss","Fenster","Garage","Garten","Haus","Haushalt","Hausmeister","Hof","Keller","Küche","Kühlschrank","Lampe","Makler","Miete","Möbel","Nachbar","Ofen","Regal","Reparatur","Schlüssel","Schrank","Sessel","Steckdose","Stecker","Stock","Strom","Teppich","Terrasse","Toilette","Treppe","Tür","Vorhang","Wand","Wäsche","Wohnblock","Wohnung","Zimmer","Zuhause","abschließen","aufräumen","einrichten","einziehen","heizen","mieten","putzen","reparieren","spülen","vermieten","wohnen","gemütlich","möbliert","ordentlich","sauber","schmutzig","Handtuch"]},{key:"health",name:"Health",icon:"🩺",words:["Apotheke","Arm","Arzt","Auge","Bauch","Bein","Blut","Brust","Diät","Fieber","Finger","Fuß","Gesicht","Gesundheit","Grippe","Haar","Hals","Haut","Herz","Husten","Knie","Kopf","Körper","Kranke","Krankenhaus","Krankenkasse","Krankenschein","Krankenschwester","Krankenwagen","Krankheit","Magen","Medikament","Medizin","Mund","Nase","Notruf","Ohr","Operation","Patient","Pflaster","Pille","Praxis","Rezept","Rücken","Salbe","Schmerz","Schnupfen","Spritze","Tablette","Verletzung","Wunde","Zahn","abnehmen","atmen","bluten","sich erholen","sich erkälten","husten","operieren","schwitzen","verschreiben","weh tun","zunehmen","blass","fit","gesund","Gute Besserung","krank","müde","Sprechstunde"]},{key:"food",name:"Food & money",icon:"🛒",words:["Angebot","Apfel","Bäckerei","Besteck","Brot","Brötchen","Fleisch","Garantie","Geld","Gemüse","Getränk","Gewürz","Kartoffel","Käse","Kasse","Kaufhaus","Kellner","Konto","Kosten","Kredit","Kunde","Lebensmittel","Mahlzeit","Markt","Metzgerei","Milch","Mineralwasser","Nachtisch","Obst","Portion","Preis","Rechnung","Restaurant","Salat","Salz","Summe","Supermarkt","Suppe","Trinkgeld","Tüte","Ware","Wurst","Zinsen","Zucker","ausgeben","backen","bestellen","bezahlen","braten","einkaufen","einzahlen","kochen","kosten","probieren","schmecken","sparen","überweisen","umtauschen","verkaufen","bar","billig","frisch","günstig","preiswert","satt","scharf","süß","teuer","vegetarisch","Nahrungsmittel","Quittung","Schein"]},{key:"travel",name:"Travel",icon:"🚆",words:["Abfahrt","Ampel","Ankunft","Aufenthalt","Ausflug","Autobahn","Bahn","Bahnhof","Bahnsteig","Benzin","Einbahnstraße","Fahrer","Fahrkarte","Fahrrad","Fahrt","Flug","Flughafen","Flugzeug","Führerschein","Fußgänger","Gepäck","Gleis","Haltestelle","Hotel","Koffer","Kreuzung","Panne","Passagier","Pension","Reifen","Reise","Reisebüro","Rezeption","Sehenswürdigkeit","Stadtplan","Stau","Straßenbahn","Tankstelle","Tourist","Umleitung","Unfall","Unterkunft","Urlaub","Verkehr","Verkehrsmittel","Verspätung","Vorfahrt","abbiegen","abfahren","abfliegen","aussteigen","buchen","einsteigen","landen","parken","reisen","reservieren","tanken","übernachten","überholen","umsteigen","verpassen","verreisen","sich verspäten","geradeaus","pünktlich","unterwegs","Fahrplan"]},{key:"offices",name:"Offices",icon:"📄",words:["Absender","Adresse","Amt","Anmeldung","Antrag","Asyl","Ausweis","Beamte","Bescheid","Brief","Briefmarke","Briefumschlag","Bürgermeister","Datum","Einschreiben","Empfänger","Erlaubnis","Formular","Fundbüro","Gebühr","Gericht","Gesetz","Paket","Pflicht","Polizei","Polizist","Post","Postleitzahl","Rathaus","Recht","Rechtsanwalt","Schalter","Staatsangehörigkeit","Stempel","Steuer","Strafe","Termin","Unterschrift","Versicherung","Vertrag","Verwaltung","Visum","Vorschrift","Zeuge","abgeben","ausfüllen","beantragen","bestätigen","erledigen","sich erkundigen","unterschreiben","verlängern","versichern","angemeldet sein","gültig","ledig","offiziell","verheiratet","verwitwet","Pass"]},{key:"education",name:"Education",icon:"🎓",words:["Abitur","Aufgabe","Ausbildung","Auszubildende","Bildung","Bleistift","Erziehung","Fach","Fehler","Forschung","Fremdsprache","Gymnasium","Heft","Hochschule","Kenntnisse","Kindergarten","Klasse","Kugelschreiber","Kurs","Lehre","Lehrer","Muttersprache","Note","Prüfung","Schule","Schüler","Semester","Student","Studium","Übung","Universität","Unterricht","Volkshochschule","Vortrag","Wissen","Wissenschaft","Wörterbuch","Zertifikat","Zeugnis","aussprechen","buchstabieren","erklären","korrigieren","sich konzentrieren","lernen","nachschlagen","prüfen","studieren","teilnehmen","übersetzen","unterrichten","wiederholen","klug","mündlich","schriftlich","schwierig","bestehen"]},{key:"media",name:"Media",icon:"📺",words:["Anruf","Anzeige","Apparat","Artikel","Bericht","Computer","Fernsehen","Fernseher","Film","Gebrauchsanweisung","Gerät","Interview","Kamera","Kommunikation","Krimi","Lautsprecher","Maschine","Nachricht","Nachrichten","Presse","Programm","Publikum","Radio","Reklame","Rundfunk","Schlagzeile","Sendung","Taschenbuch","Technik","Telefon","Überschrift","Vorwahl","Werbung","Zeitschrift","Zeitung","anrufen","ausschalten","berichten","drucken","einschalten","fernsehen","fotografieren","funktionieren","informieren","kommunizieren","senden","telefonieren","veröffentlichen","aktuell","automatisch","elektrisch","kaputt","spannend","technisch","Illustrierte","Kritik"]},{key:"environment",name:"Environment",icon:"🌳",words:["Abgas","Baum","Berg","Blume","Energie","Erde","Feld","Fluss","Gebirge","Gewitter","Himmel","Hitze","Insel","Jahreszeit","Kälte","Klima","Kraftwerk","Küste","Landschaft","Landwirtschaft","Luft","Meer","Mond","Müll","Natur","Nebel","Pflanze","Plastik","Regen","Schnee","Schutz","Smog","Sonne","Strand","Sturm","Tal","Temperatur","Tier","Umwelt","Vogel","Wald","Wetter","Wetterbericht","Wiese","Wind","Wolke","blühen","frieren","regnen","schneien","schützen","verbrauchen","wachsen","feucht","heiß","kalt","neblig","trocken","warm","Blitz","See","nass"]},{key:"feelings",name:"Feelings",icon:"💬",words:["Angst","Ansicht","Bekannte","Beziehung","Ehe","Eltern","Erwachsene","Freude","Freund","Freundschaft","Gefühl","Geduld","Geschwister","Hochzeit","Hoffnung","Laune","Liebe","Meinung","Missverständnis","Mut","Partner","Sorge","Standpunkt","Stimmung","Streit","Stress","Überzeugung","Verwandte","Vertrauen","Vorschlag","Vorurteil","Zweifel","sich aufregen","sich beschweren","enttäuschen","sich freuen","glauben","hassen","heiraten","hoffen","kritisieren","lächeln","lachen","meinen","streiten","sich unterhalten","sich verabreden","sich verlieben","vermuten","verzeihen","weinen","überzeugen","zustimmen","zweifeln","ärgerlich","ehrlich","einsam","froh","glücklich","höflich","nervös","neugierig","stolz","sympathisch","traurig","wütend","zufrieden"]}]};
+const MODES={meaning:{name:'Meanings',icon:'🔤',desc:'German word → English meaning'},article:{name:'Articles',icon:'🎨',desc:'der, die or das?'},plural:{name:'Plurals',icon:'👥',desc:'Pick the right plural form'}};
+// Plural forms: German Wiktionary (de.wiktionary.org) via the german-nouns dataset, CC BY-SA 4.0; filtered and reviewed for TELC Words.
+const PLURALS={};
+const NOUN_RE=/^[A-ZÄÖÜ][^\s\/]*( \([^)]*\))?$/;
+function wordsFor(lv,mode,topic){
+  let w=WORDS[lv];const tp=topic?getTopic(lv,topic):null;
+  if(tp){const set=new Set(tp.words);w=w.filter(x=>set.has(x[0]));}
+  if(mode==='article')w=w.filter(x=>(x[2]==='der'||x[2]==='die'||x[2]==='das')&&NOUN_RE.test(x[0]));
+  else if(mode==='plural')w=w.filter(x=>PLURALS[x[2]+'|'+x[0]]);
+  return [...w];
+}
+const mk=()=>G.mode&&G.mode!=='meaning'?'_'+G.mode:'';
+const accKey=()=>G.level+mk();
+function _uml(w){
+  let i=w.length-1;const end=/(e|el|er|en)$/.test(w)?w.length-(w.endsWith('e')?1:2):w.length;
+  for(i=end-1;i>0;i--){const ch=w[i];
+    if('aouäöüei'.includes(ch)){
+      if(ch==='u'&&w[i-1]==='a')return w.slice(0,i-1)+'äu'+w.slice(i+1);
+      if(ch==='u'&&w[i-1]==='e')return null;
+      const m={a:'ä',o:'ö',u:'ü'}[ch];return m?w.slice(0,i)+m+w.slice(i+1):null;}
+  }
+  return null;
+}
+function pluralFakes(de,valid){
+  const L=de.toLowerCase(),U=_uml(de),noS=/[sßzx]$/.test(L);let pool;
+  if(/(ung|heit|keit|schaft|ion|tät|ik|ei|ie|ur|enz|anz)$/.test(L))pool=[de+'en',/[aeiou]$/.test(L)?de+'n':de+'er',de+'e',de+'s',de];
+  else if(/in$/.test(L))pool=[de+'nen',de+'en',de+'e',de+'s',de];
+  else if(/(er|el|en)$/.test(L))pool=[de,de+'n',de+'s',de+'e',U];
+  else if(/e$/.test(L))pool=[de+'n',de+'s',de,U&&U+'n',U];
+  else if(/[aiouy]$/.test(L))pool=[de+'s',de,de+'n',de+'en'];
+  else pool=[de+'e',de+'en',de+'er',de+'s',de,U&&U+'e',U&&U+'er'];
+  const bad=new Set(valid);
+  const out=[...new Set(pool)].filter(x=>x&&!bad.has(x)&&!(noS&&x===de+'s'));
+  shuffle(out);
+  for(const x of [de+'e',de+'en',de+'n',de+'er',de]){if(out.length>=3)break;if(!bad.has(x)&&!out.includes(x))out.push(x);}
+  return out.slice(0,3);
+}
+function qOf(w){
+  const[de,en,art]=w;
+  if(G.mode==='article')return{answer:art,options:['der','die','das'],hint:en,hidePill:true,label:art+' '+de};
+  if(G.mode==='plural'){const v=PLURALS[art+'|'+de].split('|');const a='die '+v[0];
+    return{answer:a,options:shuffle([a,...pluralFakes(de,v).map(x=>'die '+x)]),hint:en,label:a};}
+  return null;
+}
+function dispWord(w){
+  if(!w)return['',''];
+  if(G.mode==='article')return[w[2]+' '+w[0],w[1]];
+  if(G.mode==='plural'){const p=PLURALS[w[2]+'|'+w[0]];return[w[2]+' '+w[0],p?'die '+p.split('|')[0]:w[1]];}
+  return[w[0],w[1]];
+}
+function renderQ(cid,q,onPick){
+  const cb=document.getElementById(cid);cb.innerHTML='';cb.dataset.mode=G.mode;
+  q.options.forEach(opt=>{const b=document.createElement('button');b.className='ch'+(G.mode==='article'?' ch-art ch-'+opt:'');b.textContent=opt;b.onclick=()=>onPick(opt);cb.appendChild(b);});
+}
 const getTopic=(lv,k)=>(TOPICS[lv]||[]).find(t=>t.key===k)||null;
-const seenKey=()=>G.level+(G.topic?'_t_'+G.topic:'');
+const seenKey=()=>G.level+(G.topic?'_t_'+G.topic:'')+mk();
 
 const XP_THRESHOLDS=[0,500,1200,2200,3500,5200,7500,10000,14000,20000,Infinity];
 let soundOn=(localStorage.getItem('soundOn')!=='false');
-let G={level:null,topic:null,words:[],queue:[],seenSet:new Set(),hearts:3,streak:0,sessionXP:0,blockXP:0,blockNum:1,blockWordsDone:0,blockWrong:[],correctCounts:{},timerInterval:null,timeLeft:10,answering:false,currentWord:null};
+let G={level:null,topic:null,mode:'meaning',q:null,words:[],queue:[],seenSet:new Set(),hearts:3,streak:0,sessionXP:0,blockXP:0,blockNum:1,blockWordsDone:0,blockWrong:[],correctCounts:{},timerInterval:null,timeLeft:10,answering:false,currentWord:null};
 
 const getAccWrong=lv=>{try{return JSON.parse(localStorage.getItem('aw_'+lv)||'[]')}catch(e){return[]}};
 const saveAccWrong=(lv,arr)=>{try{localStorage.setItem('aw_'+lv,JSON.stringify(arr))}catch(e){}};
@@ -453,31 +524,47 @@ function buildHome(){
     const c=document.createElement('div');
     c.className='lv-card '+lv.cls;
     c.innerHTML=`<div class="lv-badge">${lv.key}</div><div class="lv-info"><div class="lv-name">${lv.name}</div><div class="lv-desc">${lv.desc}</div>${pb>0?`<div class="lv-pb">⭐ Best: ${pb} XP</div>`:''}${accW>0?`<div style="margin-top:4px"><span class="wrong-badge">⚠️ ${accW} wrong word${accW!==1?'s':''}</span></div>`:''}</div><div class="lv-arrow">›</div>`;
-    c.onclick=()=>{if(TOPICS[lv.key])openTopicPick(lv.key);else startLevel(lv.key);};
+    c.onclick=()=>openTopicPick(lv.key);
     grid.appendChild(c);
   });
 }
-function openTopicPick(lv){
+function openTopicPick(lv,mode){
   const L=LEVELS.find(l=>l.key===lv),tb=document.getElementById('topicBox');
   tb.style.setProperty('--lc',L.color);
-  tb.innerHTML=`<div class="tp-sheet" role="dialog" aria-modal="true" aria-label="Choose how to practise ${lv}"><div class="tp-title">${L.name}</div><div class="tp-sub">How do you want to practise?</div><button type="button" class="tp-all" id="tpAll"><span>All ${lv} words</span><span class="tp-ct">${WORDS[lv].length}</span></button><div class="tp-sub tp-or">or choose one topic</div><div class="tp-grid" id="topicGrid"></div><button type="button" class="tp-cancel" id="tpCancel">Cancel</button></div>`;
-  const tg=document.getElementById('topicGrid');
-  TOPICS[lv].forEach(t=>{
-    const b=document.createElement('button');b.type='button';b.className='tp-chip';
-    b.innerHTML=`<span class="tp-ic">${t.icon}</span><span class="tp-nm">${t.name}</span><span class="tp-ct">${t.words.length}</span>`;
-    b.onclick=()=>{closeTopicPick();startLevel(lv,t.key);};
-    tg.appendChild(b);
-  });
-  document.getElementById('tpAll').onclick=()=>{closeTopicPick();startLevel(lv);};
-  document.getElementById('tpCancel').onclick=closeTopicPick;
+  const modes=Object.keys(MODES).filter(m=>wordsFor(lv,m,null).length>0);
+  if(!mode&&modes.length===1)mode=modes[0];
+  let html=`<div class="tp-sheet" role="dialog" aria-modal="true" aria-label="Choose how to practise ${lv}"><div class="tp-title">${L.name}</div>`;
+  if(!mode){
+    html+=`<div class="tp-sub">Choose a game</div><div class="md-list">`+modes.map(m=>`<button type="button" class="md-btn" data-m="${m}"><span class="md-ic">${MODES[m].icon}</span><span class="md-tx"><b>${MODES[m].name}</b><small>${MODES[m].desc}</small></span><span class="tp-ct">${wordsFor(lv,m,null).length}</span></button>`).join('')+`</div>`;
+  }else{
+    html+=`<div class="tp-sub">${MODES[mode].icon} ${MODES[mode].name} · ${MODES[mode].desc}</div><button type="button" class="tp-all" id="tpAll"><span>All ${lv} ${mode==='meaning'?'words':'nouns'}</span><span class="tp-ct">${wordsFor(lv,mode,null).length}</span></button><div class="tp-sub tp-or">or choose one topic</div><div class="tp-grid" id="topicGrid"></div>`;
+  }
+  html+=`<button type="button" class="tp-cancel" id="tpCancel">${mode&&modes.length>1?'← Back':'Cancel'}</button></div>`;
+  tb.innerHTML=html;
+  if(!mode){
+    tb.querySelectorAll('.md-btn').forEach(b=>{const m=b.dataset.m;b.onclick=()=>{if(TOPICS[lv])openTopicPick(lv,m);else{closeTopicPick();startLevel(lv,null,m);}};});
+    document.getElementById('tpCancel').onclick=closeTopicPick;
+  }else{
+    const tg=document.getElementById('topicGrid');
+    TOPICS[lv].forEach(t=>{
+      const n=wordsFor(lv,mode,t.key).length;if(!n)return;
+      const b=document.createElement('button');b.type='button';b.className='tp-chip';
+      b.innerHTML=`<span class="tp-ic">${t.icon}</span><span class="tp-nm">${t.name}</span><span class="tp-ct">${n}</span>`;
+      b.onclick=()=>{closeTopicPick();startLevel(lv,t.key,mode);};
+      tg.appendChild(b);
+    });
+    document.getElementById('tpAll').onclick=()=>{closeTopicPick();startLevel(lv,null,mode);};
+    document.getElementById('tpCancel').onclick=modes.length>1?()=>openTopicPick(lv):closeTopicPick;
+  }
   tb.onclick=e=>{if(e.target===tb)closeTopicPick();};
   tb.classList.add('open');
 }
 function closeTopicPick(){const tb=document.getElementById('topicBox');tb.classList.remove('open');tb.innerHTML='';}
-function startLevel(lv,topic){
+function startLevel(lv,topic,mode){
   const tp=topic?getTopic(lv,topic):null;
-  G.level=lv;G.topic=tp?tp.key:null;
-  if(tp){const set=new Set(tp.words);G.words=WORDS[lv].filter(w=>set.has(w[0]));}else G.words=[...WORDS[lv]];
+  G.level=lv;G.topic=tp?tp.key:null;G.mode=MODES[mode]?mode:'meaning';
+  G.words=wordsFor(lv,G.mode,G.topic);
+  if(!G.words.length){G.mode='meaning';G.topic=null;G.words=wordsFor(lv,'meaning',null);}
   G.hearts=3;G.streak=0;G.sessionXP=0;G.blockXP=0;
   G.blockNum=1;G.blockWordsDone=0;G.blockWrong=[];G.correctCounts={};G.answering=false;
   G.seenSet=getSeenWords(seenKey());buildQueue();
@@ -502,13 +589,15 @@ function buildQueue(){
 function nextWord(){if(!G.queue.length)buildQueue();G.currentWord=G.queue.shift();G.seenSet.add(G.currentWord[0]);updateHUD();renderWord();startTimer();}
 
 function renderWord(){
-  const[de,en,art]=G.currentWord;
-  setArtPill('artPill',art);
+  const[de,en,art]=G.currentWord;const q=qOf(G.currentWord);G.q=q;
+  setArtPill('artPill',q&&q.hidePill?'':art);
   document.getElementById('wordDe').textContent=de;
+  document.getElementById('wordHint').textContent=q?q.hint:'';
   document.getElementById('wordFb').textContent='';
   document.getElementById('wordFb').className='word-fb';
   const wc=document.getElementById('wordCard');wc.className='word-card';applyStreakGlow(wc);
-  buildChoices('choices',en,WORDS[G.level],(chosen)=>handleAnswer(chosen,en));
+  if(q)renderQ('choices',q,(chosen)=>handleAnswer(chosen,q.answer));
+  else{document.getElementById('choices').dataset.mode='meaning';buildChoices('choices',en,WORDS[G.level],(chosen)=>handleAnswer(chosen,en));}
   const dw=document.getElementById('blockDots');dw.innerHTML='';
   for(let i=0;i<10;i++){const d=document.createElement('div');d.className='bdot'+(i<G.blockWordsDone?' done':i===G.blockWordsDone?' now':'');dw.appendChild(d);}
   document.getElementById('blockInfo').textContent=`Block ${G.blockNum} · Word ${G.blockWordsDone+1}/10`;
@@ -537,19 +626,20 @@ function handleAnswer(chosen,correct){
   if(G.answering)return;G.answering=true;clearInterval(G.timerInterval);
   const isOk=chosen===correct,spd=isOk?Math.round((G.timeLeft/10)*5):0,mult=getMult(),earned=isOk?Math.round((10+spd)*mult):0;
   markChoices('choices',chosen,correct,isOk);
+  if(G.mode==='article')setArtPill('artPill',G.currentWord[2]);
   if(isOk){
     G.streak++;G.sessionXP+=earned;G.blockXP+=earned;
     const k=G.currentWord[0];G.correctCounts[k]=(G.correctCounts[k]||0)+1;
-    if(G.correctCounts[k]>=2)removeFromAccWrong(G.level,k);
+    if(G.correctCounts[k]>=2)removeFromAccWrong(accKey(),k);
     document.getElementById('wordCard').classList.add('correct');
     document.getElementById('wordFb').textContent=`+${earned} XP`;
     document.getElementById('wordFb').className='word-fb ok';
     screenFlash('ok');playS('ok');checkCombo();
   }else{
     G.streak=0;G.hearts=Math.max(0,G.hearts-1);G.blockWrong.push(G.currentWord);
-    addToAccWrong(G.level,G.currentWord);
+    addToAccWrong(accKey(),G.currentWord);
     document.getElementById('wordCard').classList.add('wrong');
-    document.getElementById('wordFb').textContent=`"${correct}"`;
+    document.getElementById('wordFb').textContent=`"${G.q?G.q.label:correct}"`;
     document.getElementById('wordFb').className='word-fb nope';
     screenFlash('nope');playS('nope');shakeH();
     if(G.hearts===0){setTimeout(endSession,900);return;}
@@ -566,11 +656,12 @@ function markChoices(containerId,chosen,correct,isOk){
 }
 function timeUp(){
   if(G.answering)return;G.answering=true;G.streak=0;G.hearts=Math.max(0,G.hearts-1);
-  G.blockWrong.push(G.currentWord);addToAccWrong(G.level,G.currentWord);
+  G.blockWrong.push(G.currentWord);addToAccWrong(accKey(),G.currentWord);
   document.getElementById('wordCard').classList.add('wrong');
-  document.getElementById('wordFb').textContent=`Time! "${G.currentWord[1]}"`;
+  const ans=G.q?G.q.answer:G.currentWord[1];if(G.mode==='article')setArtPill('artPill',G.currentWord[2]);
+  document.getElementById('wordFb').textContent=`Time! "${G.q?G.q.label:ans}"`;
   document.getElementById('wordFb').className='word-fb nope';
-  document.querySelectorAll('#choices .ch').forEach(b=>{b.disabled=true;if(b.textContent===G.currentWord[1])b.classList.add('reveal');});
+  document.querySelectorAll('#choices .ch').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('reveal');});
   screenFlash('nope');playS('nope');shakeH();G.blockWordsDone++;updateHUD();
   if(G.hearts===0){setTimeout(endSession,900);return;}
   setTimeout(()=>{G.answering=false;if(G.blockWordsDone>=10)showBlockEnd();else nextWord();},950);
@@ -621,33 +712,33 @@ function showBlockEnd(){
 }
 function showBonus(){
   const list=document.getElementById('bonusList');list.innerHTML='';
-  G.blockWrong.forEach(w=>{const row=document.createElement('div');row.className='bonus-row';row.innerHTML=`<span class="bonus-de">${w[0]}</span><span class="bonus-en">${w[1]}</span>`;list.appendChild(row);});
+  G.blockWrong.forEach(w=>{const row=document.createElement('div');row.className='bonus-row';const dw=dispWord(w);row.innerHTML=`<span class="bonus-de">${dw[0]}</span><span class="bonus-en">${dw[1]}</span>`;list.appendChild(row);});
   showScreen('bonusScreen');
 }
 function continueBlock(){G.blockNum++;G.blockWordsDone=0;G.blockXP=0;G.blockWrong=[];showScreen('gameScreen');updateHUD();nextWord();}
 
 function endSession(){
-  clearInterval(G.timerInterval);saveSeenWords(seenKey(),G.seenSet);addTotalXP(G.sessionXP);setBetterPB(G.level,G.sessionXP);
+  clearInterval(G.timerInterval);saveSeenWords(seenKey(),G.seenSet);addTotalXP(G.sessionXP);setBetterPB(accKey(),G.sessionXP);
   const learned=Object.entries(G.correctCounts).filter(([,c])=>c>=1).map(([k])=>k);
-  document.getElementById('seLvLabel').textContent='Level '+G.level+(G.topic?' · '+getTopic(G.level,G.topic).name:'');
+  document.getElementById('seLvLabel').textContent='Level '+G.level+(G.mode!=='meaning'?' · '+MODES[G.mode].name:'')+(G.topic?' · '+getTopic(G.level,G.topic).name:'');
   document.getElementById('seWords').textContent=G.seenSet.size;
   document.getElementById('seBlocks').textContent=G.blockNum;
   document.getElementById('seLearned').textContent=learned.length;
   document.getElementById('seXP').textContent=G.sessionXP+' XP';
-  document.getElementById('sePB').textContent=getPB(G.level)+' XP';
+  document.getElementById('sePB').textContent=getPB(accKey())+' XP';
   const lwl=document.getElementById('lwList');lwl.innerHTML='';
   if(!learned.length){lwl.innerHTML='<div style="color:var(--muted);font-size:0.78rem;text-align:center;padding:8px">Keep playing to master words!</div>';}
-  else{learned.forEach(dw=>{const w=WORDS[G.level].find(x=>x[0]===dw);const r=document.createElement('div');r.className='lw-row';r.innerHTML=`<span style="font-weight:700">${dw}</span><span style="color:var(--muted)">${w?w[1]:''}</span>`;lwl.appendChild(r);});}
-  const accW=getAccWrong(G.level),sec=document.getElementById('seAccWrongSection');
+  else{learned.forEach(dw=>{const w=WORDS[G.level].find(x=>x[0]===dw);const d=w?dispWord(w):[dw,''];const r=document.createElement('div');r.className='lw-row';r.innerHTML=`<span style="font-weight:700">${d[0]}</span><span style="color:var(--muted)">${d[1]}</span>`;lwl.appendChild(r);});}
+  const accW=getAccWrong(accKey()),sec=document.getElementById('seAccWrongSection');
   if(accW.length>0){sec.style.display='';document.getElementById('accWrongCount').textContent=accW.length;}else sec.style.display='none';
   showScreen('sessionEndScreen');playS('end');buildHome();
 }
 function goHome(){showScreen('homeScreen');buildHome();}
-function restartLevel(){startLevel(G.level,G.topic);}
+function restartLevel(){startLevel(G.level,G.topic,G.mode);}
 
-let BG={words:[],queue:[],current:null,index:0,total:0,correct:0,wrong:0,bonusXP:0,timerInterval:null,timeLeft:10,answering:false,cleared:[]};
+let BG={q:null,words:[],queue:[],current:null,index:0,total:0,correct:0,wrong:0,bonusXP:0,timerInterval:null,timeLeft:10,answering:false,cleared:[]};
 function startAccBonusGame(){
-  const accW=getAccWrong(G.level);if(!accW.length){goHome();return;}
+  const accW=getAccWrong(accKey());if(!accW.length){goHome();return;}
   BG.words=[...accW];BG.queue=shuffle([...accW]);BG.total=BG.queue.length;
   BG.index=0;BG.correct=0;BG.wrong=0;BG.bonusXP=0;BG.answering=false;BG.cleared=[];
   showScreen('bonusGameScreen');
@@ -656,29 +747,32 @@ function startAccBonusGame(){
 }
 function nextBonusWord(){if(!BG.queue.length){finishBonusGame();return;}BG.current=BG.queue.shift();BG.index++;renderBonusWord();startBonusTimer();}
 function renderBonusWord(){
-  const[de,en,art]=BG.current;setArtPill('bgArtPill',art);
+  const[de,en,art]=BG.current;const q=qOf(BG.current);BG.q=q;setArtPill('bgArtPill',q&&q.hidePill?'':art);
   document.getElementById('bgWordDe').textContent=de;
+  document.getElementById('bgWordHint').textContent=q?q.hint:'';
   document.getElementById('bgWordFb').textContent='';document.getElementById('bgWordFb').className='word-fb';
   document.getElementById('bgWordCard').className='word-card';
   document.getElementById('bgProgress').textContent=`Word ${BG.index} of ${BG.total}`;
   const ctr=document.getElementById('bgCounter');ctr.innerHTML='';
   for(let i=0;i<BG.total;i++){const d=document.createElement('span');d.className='bonus-dot'+(i<BG.index-1?(BG.cleared.includes(i)?' done':' wrong-dot'):i===BG.index-1?' now':'');ctr.appendChild(d);}
-  buildChoices('bgChoices',en,WORDS[G.level],(chosen)=>handleBonusAnswer(chosen,en));
+  if(q)renderQ('bgChoices',q,(chosen)=>handleBonusAnswer(chosen,q.answer));
+  else{document.getElementById('bgChoices').dataset.mode='meaning';buildChoices('bgChoices',en,WORDS[G.level],(chosen)=>handleBonusAnswer(chosen,en));}
 }
 function handleBonusAnswer(chosen,correct){
   if(BG.answering)return;BG.answering=true;clearInterval(BG.timerInterval);
   const isOk=chosen===correct,spd=isOk?Math.round((BG.timeLeft/10)*5):0;
   markChoices('bgChoices',chosen,correct,isOk);
+  if(G.mode==='article')setArtPill('bgArtPill',BG.current[2]);
   if(isOk){
     const earned=Math.round(15+spd);BG.correct++;BG.bonusXP+=earned;BG.cleared.push(BG.index-1);
-    removeFromAccWrong(G.level,BG.current[0]);
+    removeFromAccWrong(accKey(),BG.current[0]);
     document.getElementById('bgWordCard').classList.add('correct');
     document.getElementById('bgWordFb').textContent=`+${earned} XP ✓ Cleared!`;
     document.getElementById('bgWordFb').className='word-fb ok';
     screenFlash('ok');playS('ok');spawnSparks('#22c55e');
   }else{
     BG.wrong++;document.getElementById('bgWordCard').classList.add('wrong');
-    document.getElementById('bgWordFb').textContent=`"${correct}"`;
+    document.getElementById('bgWordFb').textContent=`"${BG.q?BG.q.label:correct}"`;
     document.getElementById('bgWordFb').className='word-fb nope';
     screenFlash('nope');playS('nope');shakeH();
   }
@@ -687,9 +781,10 @@ function handleBonusAnswer(chosen,correct){
 function bonusTimeUp(){
   if(BG.answering)return;BG.answering=true;BG.wrong++;
   document.getElementById('bgWordCard').classList.add('wrong');
-  document.getElementById('bgWordFb').textContent=`Time! "${BG.current[1]}"`;
+  const ans=BG.q?BG.q.answer:BG.current[1];if(G.mode==='article')setArtPill('bgArtPill',BG.current[2]);
+  document.getElementById('bgWordFb').textContent=`Time! "${BG.q?BG.q.label:ans}"`;
   document.getElementById('bgWordFb').className='word-fb nope';
-  document.querySelectorAll('#bgChoices .ch').forEach(b=>{b.disabled=true;if(b.textContent===BG.current[1])b.classList.add('reveal');});
+  document.querySelectorAll('#bgChoices .ch').forEach(b=>{b.disabled=true;if(b.textContent===ans)b.classList.add('reveal');});
   screenFlash('nope');playS('nope');
   setTimeout(()=>{BG.answering=false;nextBonusWord();},950);
 }
@@ -704,7 +799,7 @@ function tickBonusTimer(){
 }
 function finishBonusGame(){
   clearInterval(BG.timerInterval);addTotalXP(BG.bonusXP);
-  const accRemaining=getAccWrong(G.level).length;
+  const accRemaining=getAccWrong(accKey()).length;
   document.getElementById('brCorrect').textContent=BG.correct;document.getElementById('brWrong').textContent=BG.wrong;
   document.getElementById('brXP').textContent='+'+BG.bonusXP+' XP';document.getElementById('brCleared').textContent=BG.cleared.length;
   const pct=BG.total>0?Math.round(BG.correct/BG.total*100):0;
@@ -764,8 +859,9 @@ function speakGerman(text){
   u.onend=()=>{if(btn)btn.classList.remove('speaking');};u.onerror=()=>{if(btn)btn.classList.remove('speaking');};
   _synth.speak(u);
 }
-function speakWord(){if(G.currentWord)speakGerman(_speechText(G.currentWord));}
-function speakBonusWord(){if(BG.current)speakGerman(_speechText(BG.current));}
+function _bare(w){return String(w[0]||'').replace(/\([^)]*\)/g,' ').replace(/\s+/g,' ').trim();}
+function speakWord(){if(G.currentWord)speakGerman(G.mode==='article'&&!G.answering?_bare(G.currentWord):_speechText(G.currentWord));}
+function speakBonusWord(){if(BG.current)speakGerman(G.mode==='article'&&!BG.answering?_bare(BG.current):_speechText(BG.current));}
 
 function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=0|Math.random()*(i+1);[a[i],a[j]]=[a[j],a[i]];}return a;}
@@ -844,8 +940,8 @@ document.addEventListener('click',_unlockAC,{passive:true});
 
 updateSoundToggleUI();
 buildHome();
-// Deep link from SEO pages: /?level=b1 starts that level directly, /?level=b1&topic=work a B1 topic
-(function(){try{const q=new URLSearchParams(location.search),lv=(q.get('level')||'').toUpperCase(),tp=(q.get('topic')||'').toLowerCase();if(WORDS[lv])startLevel(lv,tp);}catch(e){}})();
+// Deep link from SEO pages: /?level=b1 starts that level directly, /?level=b1&topic=work a B1 topic, &mode=articles|plurals a game type
+(function(){try{const q=new URLSearchParams(location.search),lv=(q.get('level')||'').toUpperCase(),tp=(q.get('topic')||'').toLowerCase(),md=(q.get('mode')||'').toLowerCase().replace(/s$/,'');if(WORDS[lv])startLevel(lv,tp,md);}catch(e){}})();
 </script>
 </body>
 </html>

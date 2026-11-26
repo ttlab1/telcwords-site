@@ -97,3 +97,11 @@ commits. Record every title/description change with old and new text.
   pages, so it does not distort the A1/B1 vs A2/B2/C1 comparison.
 - Owner decisions recorded in PLAYBOOK §5: no paid Windsor plan (14+14-day method); scheduled
   agent runs switched to Opus.
+## 2026-11-26 · owner request: game modes
+- `index.html`: new game types chosen per level in the level sheet — Meanings (unchanged),
+  Articles (der/die/das buttons; article pill hidden until answered; speech says the bare
+  noun before answering). Plurals mode is built and tested but ships with an empty
+  `PLURALS` table until the owner approves the Wiktionary (CC BY-SA 4.0) data.
+  Deep links: `/?level=a1&mode=articles` (also `&topic=` for B1). Storage per mode:
+  `pb_/aw_/seen_<LEVEL>_article`; Meanings keys unchanged. `WORDS` byte-identical.
+- Articles guide: CTAs and level row now open the Articles game. Sitemap lastmod.
