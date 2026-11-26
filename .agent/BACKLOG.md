@@ -43,8 +43,9 @@ findings at the right place, and keep this file short and current.
 
 ## Owner decisions
 - [x] 2026-11-16: owner approved; 21 `WORDS` entries corrected (see changelog).
-- [ ] Windsor.ai is a trial with only 30 days of history; fine for 28-day reports, but
-      period-over-period comparison (28 vs previous 28 days) will not work.
+- [x] 2026-11-26: Windsor stays free (30 days of history); no paid plan.
+- [x] 2026-11-26: owner switched the scheduled agent runs to the Opus model (content,
+      technical-seo, analytics; distribution already was).
 
 ## Analytics follow-ups
 - [ ] Articles guide title/description changed 2026-11-16: do not change again before
@@ -58,8 +59,7 @@ findings at the right place, and keep this file short and current.
       Wortschatz" (needs the owner's OK). Repeat in the December monthly review.
 - [ ] start.html lost position (4.6 → 14.0) while `/` gained; check overlap of the two for
       generic "telc vocabulary" queries before changing anything.
-- [ ] Windsor trial: only 30 days of history, no previous-period comparison. Keep the halves
-      method or ask the owner about a plan.
+- [x] 2026-11-26: owner will not pay for Windsor; use the 14+14-day method (PLAYBOOK §5).
 
 ## Distribution
 - [x] 2026-11-25: drafts for r/German and Lemmy !german (der/die/das counts) given to the

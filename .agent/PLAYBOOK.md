@@ -131,6 +131,11 @@ already rank in positions 2–9 but have very little volume. German- and
 Turkish-language queries ("telc b1 wortschatz", "telc a1 kelime listesi") reach the
 site at positions 50+; the owner has decided to stay English-only for now, so the
 monthly review should show him the data on this again rather than act on it.
+2026-11-26 owner decisions: (a) approved one English sentence per level page naming the German
+terms "Wortliste / Wortschatzliste" (done in that run; no German pages, rule 2.4 unchanged);
+(b) no paid Windsor.ai plan: the connector returns only the last 30 days, so "previous 28 days"
+cannot be pulled. Compare the two 14-day halves of the last 28 days, the previous reports'
+numbers and the baseline instead, and say so in the report.
 
 ## 6. Reports
 

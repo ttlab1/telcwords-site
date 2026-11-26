@@ -87,3 +87,13 @@ commits. Record every title/description change with old and new text.
   Before (GSC 2026-11-11 – 11-24): B1 96 impr, pos 7.3, 5 clicks; A1 31 impr, pos 6.5, 1 click.
   Do not change these titles/descriptions again before 2026-12-17.
 - Verified live 2026-11-26 ~15:50 UTC (second fetch; first fetch returned a stale copy).
+
+## 2026-11-26 · analytics follow-up (owner replied live)
+- Owner approved the German-term sentence. All five level pages (A1–C1) got one English paragraph
+  after the topic list: `In German, a list like this is called a Wortliste or Wortschatzliste. This
+  page is the TELC Words <level> Wortliste, with the article and an English meaning for every word.`
+  No title/description/H1 changes. Sitemap lastmod 2026-11-26 for the five pages; deploy probe.
+  Note for judging the A1/B1 title test: this body sentence went live the same day on all five
+  pages, so it does not distort the A1/B1 vs A2/B2/C1 comparison.
+- Owner decisions recorded in PLAYBOOK §5: no paid Windsor plan (14+14-day method); scheduled
+  agent runs switched to Opus.
