@@ -145,3 +145,8 @@ commits. Record every title/description change with old and new text.
   favicon.svg, android-chrome-192x192.png / -512x512.png. Icon links in all 11 pages'
   `<head>` now carry `?v=2` (cache-busting) plus .ico and .svg links; manifest lists the
   192/512 icons. index.html game code verified byte-identical after the head edit.
+- Same day, owner preferred concept C: favicon set redrawn as a violet rounded square with a
+  white W and umlaut dots (Ẅ); icon links bumped to `?v=3`. The in-page logo (the gradient
+  "T" box: `.logo-block` in index.html, `.brand i` on all landing pages) now shows the same
+  icon via `background:url(/favicon.svg?v=3)`. The first favicon push (8c119d4) had not
+  deployed; this push re-sends everything. index.html game code byte-identical.
