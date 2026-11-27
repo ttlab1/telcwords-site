@@ -137,3 +137,11 @@ commits. Record every title/description change with old and new text.
 - Verified live 2026-11-27 12:40 UTC (probe + home page credit line). The first push
   (`1f804a6`) did not deploy within 3 minutes; a second probe-only push deployed at once.
   Same pattern as 2026-11-16: if a deploy does not appear, push a fresh probe once.
+
+## 2026-11-27 · owner request · new favicon
+- Replaced the old "tw" favicon with a new icon (owner request): two stacked word cards
+  (teal behind, violet front) with a white W. Same file names overwritten
+  (favicon-16x16.png, favicon-32x32.png, apple-touch-icon.png); added favicon.ico,
+  favicon.svg, android-chrome-192x192.png / -512x512.png. Icon links in all 11 pages'
+  `<head>` now carry `?v=2` (cache-busting) plus .ico and .svg links; manifest lists the
+  192/512 icons. index.html game code verified byte-identical after the head edit.
