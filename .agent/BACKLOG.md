@@ -12,7 +12,8 @@ findings at the right place, and keep this file short and current.
       fresh, unique query string and re-fetch before concluding a deploy failed.
 - [ ] index.html head: og:site_name, WebSite JSON-LD, theme-color; link to /start.html
       (only in a run that can verify live).
-- [ ] 320 px overflow on level pages, topic page and articles guide (6–52 px).
+- [ ] 320 px overflow on level pages, topic page and articles guide (6–52 px). 2026-11-27: on
+      telc-a2-vocabulary.html the cause is the nowrap CTA "▶ Practise TELC A2 words now" (330 px).
 - [ ] Proposal: contrast of white text on the green das badge (~2.3:1).
 - [ ] Manifest has no 192/512 px icons (needs a logo export from the owner).
 - [ ] Confirm from outside the browser that `http://telcwords.com/` answers with a
@@ -27,7 +28,11 @@ findings at the right place, and keep this file short and current.
       already sends about half as many organic visits as Google).
 
 ## Content
-- [ ] Expand `telc-exam-vocabulary-tips.html` (about 340 words) into a full guide.
+- [x] 2026-11-27 (`e87ad9c`): expanded `telc-exam-vocabulary-tips.html` (~305 → ~1,790 words;
+      title/description/H1 changed, see changelog; judge from 2026-12-18).
+- [x] 2026-11-27 (`e87ad9c`): NEW `german-separable-verbs-list.html` (138 verbs A1–B1 by prefix).
+- [ ] Next verb page: verbs with prepositions (+ case) from the B2/C1 phrase entries in `WORDS`
+      (C1 has many "… auf (+ Akk.)" entries); check demand for "verben mit präpositionen liste".
 - [x] 2026-11-16 (`61073aa`): expanded `german-articles-der-die-das.html` (rules by
       ending counted on 2,391 nouns).
 - [x] 2026-11-16 (`806e72b`): `telc-b1-vocabulary-by-topic.html` (622 words, 10 topics
@@ -38,7 +43,10 @@ findings at the right place, and keep this file short and current.
 - [ ] Printable / PDF-friendly word list (query "wortschatz c1 deutsch liste pdf telc" at pos 9):
       e.g. a print stylesheet for level pages; check demand again first.
 - [ ] Per-level study plans (for example "TELC B1 in 8 weeks: vocabulary plan").
-- [ ] Verb pages per level (separable verbs, verbs with prepositions) from `WORDS`.
+- [~] Verb pages per level: separable verbs done 2026-11-27; prepositions still open (above).
+- [ ] `WORDS` data notes (owner decision, agents may not edit): `ausrechnen` entry
+      "to work something out figure out" lacks a slash; A2 `schlafengehen`
+      stored as one word (standard: schlafen gehen).
 - [ ] Exam explainer pages (format of each TELC level), facts verified on telc.net.
 
 ## Owner decisions

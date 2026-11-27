@@ -105,3 +105,24 @@ commits. Record every title/description change with old and new text.
   Deep links: `/?level=a1&mode=articles` (also `&topic=` for B1). Storage per mode:
   `pb_/aw_/seen_<LEVEL>_article`; Meanings keys unchanged. `WORDS` byte-identical.
 - Articles guide: CTAs and level row now open the Articles game. Sitemap lastmod.
+
+## 2026-11-27 · content
+- `e87ad9c` (Opus subagent wrote, lead reviewed): NEW https://telcwords.com/german-separable-verbs-list.html
+  — 138 separable verbs from the A1/A2/B1 `WORDS` lists (A1 18, A2 67, B1 53), grouped by prefix,
+  stored English and first level; rules (word order, modal, subordinate clause, Perfekt incl.
+  vorbereitet/zubereitet exception, zu-infinitive, stress), inseparable and über/um/unter/durch
+  sections, FAQ (FAQPage), Article + BreadcrumbList JSON-LD, search filter, CTAs /?level=a1|a2|b1.
+- Tips guide expanded (~305 → ~1,790 words): words-per-day table from list sizes, sample week,
+  game modes, nouns/verbs/phrases, common mistakes, 5-item FAQ. No exam facts stated.
+  Title old: `How to Learn TELC Vocabulary Fast: A Practical Study Plan | TELC Words`
+  Title new: `How to Learn TELC Vocabulary: Study Plan & Tips | TELC Words`
+  Description old: `A simple, realistic plan to learn German vocabulary for TELC exams: daily sessions, spaced repetition, articles, collocations and review of mistakes.`
+  Description new: `How to learn German vocabulary for telc exams: words per day for each level, a weekly routine, game modes, and tips for nouns, verbs and phrases.`
+  H1 old: `How to Learn TELC Vocabulary Effectively`; new: `How to Learn TELC Vocabulary: A Study Plan with Tips`.
+  Before (GSC last 28 days to ~2026-11-25): 11 impressions, pos 10.7, 0 clicks. Judge from 2026-12-18.
+- Links: start.html Guides list; one contextual sentence on A1/A2/B1 list pages; footer row on all
+  10 landing pages got "Separable verbs list". No title/description changes on level pages (A1/B1
+  title test unaffected: all level pages got the same kind of body edit). Sitemap: 11 URLs, lastmod.
+  `index.html` untouched. deploy-check.txt = 2026-11-27T10:35:41Z.
+- NOT verified live: the web fetch permission for telcwords.com was not answered in this unattended
+  run (PROVENANCE_REQUIRED). Push confirmed on origin/main (e87ad9c).
