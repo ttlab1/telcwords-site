@@ -72,9 +72,9 @@ hosting panel any more: this repository is the only way the site changes.
    access), or `git pull --ff-only origin main`. Read `.agent/PLAYBOOK.md`,
    `.agent/BACKLOG.md`, the last ~40 lines of `.agent/CHANGELOG.md` and the latest
    file of each kind in `.agent/reports/`.
-2. Plan the run briefly, then do the hands-on work. If the session can start
-   subagents, delegate execution to a subagent running the Opus model and keep
-   planning and review in the main session; the owner asked for this split.
+2. Plan the run briefly, then do the hands-on work yourself in this session. The
+   runs use the Opus model end to end (owner's decision, 2026-11-27); do not hand
+   planning or execution to another model.
 3. Make changes in small commits with clear messages. Run the self-checks in §4.
 4. Push to `main` (one git network operation at a time).
 5. Verify deployment: rewrite the single line of `deploy-check.txt` with the current
