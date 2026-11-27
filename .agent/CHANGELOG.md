@@ -134,3 +134,6 @@ commits. Record every title/description change with old and new text.
   `data/plurals.tsv` publishes the list under the same licence. `WORDS` byte-identical.
 - Deep link `/?level=<lv>&mode=plurals`. Tested in headless Chromium: all 1,654 nouns give
   4 distinct options with exactly one valid plural; no JS errors.
+- Verified live 2026-11-27 12:40 UTC (probe + home page credit line). The first push
+  (`1f804a6`) did not deploy within 3 minutes; a second probe-only push deployed at once.
+  Same pattern as 2026-11-16: if a deploy does not appear, push a fresh probe once.
