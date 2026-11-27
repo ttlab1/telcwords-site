@@ -17,9 +17,10 @@ hosting panel any more: this repository is the only way the site changes.
   media, environment, feelings). `TOPICS.B1` and the tables on
   `telc-b1-vocabulary-by-topic.html` hold the same 636 words and must stay in sync.
 - Since 2026-11-26 (owner request) the level sheet first asks for a game type:
-  Meanings, Articles (der/die/das) and, once its data is approved, Plurals (`PLURALS`
+  Meanings, Articles (der/die/das) and Plurals (owner approved 2026-11-27; `PLURALS`
   table, from German Wiktionary via the german-nouns dataset, CC BY-SA 4.0, needs the
-  credit line on the home screen). Deep links `/?level=<lv>&mode=articles|plurals`.
+  credit line on the home screen; the same data is published as `data/plurals.tsv`
+  under CC BY-SA 4.0 and must stay in sync with `PLURALS`). Deep links `/?level=<lv>&mode=articles|plurals`.
   Hard rule 2.1 still applies to agents: these were one-off changes ordered by the owner.
 - Landing pages: `start.html`, `telc-a1-vocabulary.html` … `telc-c1-vocabulary.html`,
   `german-articles-der-die-das.html`, `telc-exam-vocabulary-tips.html`.

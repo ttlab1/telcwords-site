@@ -126,3 +126,11 @@ commits. Record every title/description change with old and new text.
   `index.html` untouched. deploy-check.txt = 2026-11-27T10:35:41Z.
 - NOT verified live: the web fetch permission for telcwords.com was not answered in this unattended
   run (PROVENANCE_REQUIRED). Push confirmed on origin/main (e87ad9c).
+
+## 2026-11-27 · owner approved plural game
+- `index.html`: `PLURALS` filled with 1,654 reviewed nouns (from 1,978 Wiktionary matches;
+  324 dropped by review: mass nouns, months, plurals with another meaning, doubtful forms).
+  Home text mentions plurals; credit line (Wiktionary via german-nouns, CC BY-SA 4.0).
+  `data/plurals.tsv` publishes the list under the same licence. `WORDS` byte-identical.
+- Deep link `/?level=<lv>&mode=plurals`. Tested in headless Chromium: all 1,654 nouns give
+  4 distinct options with exactly one valid plural; no JS errors.
